@@ -10,6 +10,7 @@ export function middleware(request: NextRequest) {
   );
 
   const accessToken =
+    request.cookies.get("sunfusion_token")?.value ??
     request.cookies.get("sb-access-token")?.value ??
     request.cookies.get("supabase-auth-token")?.value;
 
@@ -20,7 +21,7 @@ export function middleware(request: NextRequest) {
   }
 
   if (isPublicRoute && accessToken) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
   return NextResponse.next();
