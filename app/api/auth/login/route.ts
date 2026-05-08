@@ -7,6 +7,12 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const AUTH_JWT_SECRET = process.env.AUTH_JWT_SECRET;
 
+console.log("[auth/login] env check", {
+  NEXT_PUBLIC_SUPABASE_URL: SUPABASE_URL,
+  SUPABASE_SERVICE_ROLE_KEY: SUPABASE_SERVICE_ROLE_KEY,
+  AUTH_JWT_SECRET: AUTH_JWT_SECRET,
+});
+
 type LoginRequest = {
   username?: string;
   password?: string;
@@ -14,10 +20,16 @@ type LoginRequest = {
 
 export async function POST(request: Request) {
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY || !AUTH_JWT_SECRET) {
+    console.error("[auth/login] missing env variables", {
+      NEXT_PUBLIC_SUPABASE_URL: SUPABASE_URL,
+      SUPABASE_SERVICE_ROLE_KEY: SUPABASE_SERVICE_ROLE_KEY,
+      AUTH_JWT_SECRET: AUTH_JWT_SECRET,
+    });
+
     return NextResponse.json(
       {
         message:
-          "Server auth config is missing. Set NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, AUTH_JWT_SECRET.",
+          "Sunucu ortam degiskenleri eksik veya bos. Vercel Project Settings > Environment Variables altinda NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY ve AUTH_JWT_SECRET degiskenlerinin tanimli oldugunu kontrol edin.",
       },
       { status: 500 }
     );

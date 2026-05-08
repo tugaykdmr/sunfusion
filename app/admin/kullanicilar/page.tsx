@@ -9,8 +9,12 @@ type UserRow = {
   role: string;
   phone: string | null;
   email: string;
-  tenant: { name: string } | null;
+  tenant: { name: string }[] | null;
 };
+
+function firstOrNull<T>(value: T[] | null | undefined) {
+  return value && value.length > 0 ? value[0] : null;
+}
 
 async function deleteUser(formData: FormData) {
   "use server";
@@ -63,7 +67,7 @@ export default async function KullanicilarPage() {
                 style={{ borderColor: "var(--color-border)" }}
               >
                 <td className="p-3 font-medium">{user.full_name}</td>
-                <td className="p-3">{user.tenant?.name ?? "-"}</td>
+                <td className="p-3">{firstOrNull(user.tenant)?.name ?? "-"}</td>
                 <td className="p-3">{user.unit ?? "-"}</td>
                 <td className="p-3">{user.title ?? "-"}</td>
                 <td className="p-3">{user.role}</td>

@@ -6,8 +6,8 @@ type AuditLogRow = {
   details: Record<string, unknown> | null;
   ip_address: string | null;
   created_at: string;
-  user: { full_name: string } | null;
-  tenant: { name: string } | null;
+  user: { full_name: string }[] | null;
+  tenant: { name: string }[] | null;
 };
 
 function formatDate(value: string) {
@@ -24,6 +24,10 @@ function formatDetails(details: Record<string, unknown> | null) {
   } catch {
     return "-";
   }
+}
+
+function firstOrNull<T>(value: T[] | null | undefined) {
+  return value && value.length > 0 ? value[0] : null;
 }
 
 export default async function IslemGecmisiPage() {
@@ -64,8 +68,8 @@ export default async function IslemGecmisiPage() {
                 className="border-t"
                 style={{ borderColor: "var(--color-border)" }}
               >
-                <td className="p-3">{log.user?.full_name ?? "-"}</td>
-                <td className="p-3">{log.tenant?.name ?? "-"}</td>
+                <td className="p-3">{firstOrNull(log.user)?.full_name ?? "-"}</td>
+                <td className="p-3">{firstOrNull(log.tenant)?.name ?? "-"}</td>
                 <td className="p-3 font-medium">{log.action}</td>
                 <td className="p-3">
                   <code className="sf-muted text-xs">{formatDetails(log.details)}</code>

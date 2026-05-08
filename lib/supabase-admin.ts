@@ -3,9 +3,19 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
+console.log("[supabase-admin] env check", {
+  NEXT_PUBLIC_SUPABASE_URL: supabaseUrl,
+  SUPABASE_SERVICE_ROLE_KEY: supabaseServiceRoleKey,
+});
+
 if (!supabaseUrl || !supabaseServiceRoleKey) {
+  console.error("[supabase-admin] missing env variables", {
+    NEXT_PUBLIC_SUPABASE_URL: supabaseUrl,
+    SUPABASE_SERVICE_ROLE_KEY: supabaseServiceRoleKey,
+  });
+
   throw new Error(
-    "Missing env vars: NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY"
+    "Supabase admin env degiskenleri eksik. NEXT_PUBLIC_SUPABASE_URL ve SUPABASE_SERVICE_ROLE_KEY degerlerini Vercel ortam degiskenlerine ekleyin."
   );
 }
 
