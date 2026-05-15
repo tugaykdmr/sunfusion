@@ -103,6 +103,7 @@ export function ResponsiveSidebarShell({
   const [isOpen, setIsOpen] = useState(false);
 
   const closeSidebar = () => setIsOpen(false);
+  const openSidebar = () => setIsOpen(true);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -123,11 +124,12 @@ export function ResponsiveSidebarShell({
   return (
     <div className="sf-shell min-h-screen">
       <div className="mx-auto min-h-screen max-w-7xl p-4">
+        {/* Mobil üst bar: yalnızca SunFusion + hamburger */}
         <div className="mb-4 flex items-center justify-between lg:hidden">
-          <BrandBlock title={brandTitle} subtitle={brandSubtitle} />
+          <p className="text-xl font-semibold">{brandTitle}</p>
           <button
             type="button"
-            onClick={() => setIsOpen(true)}
+            onClick={openSidebar}
             className="sf-btn-secondary flex h-10 w-10 items-center justify-center rounded-xl"
             aria-label="Menüyü aç"
             aria-expanded={isOpen}
@@ -137,34 +139,52 @@ export function ResponsiveSidebarShell({
         </div>
 
         <div className="flex gap-4">
-          {isOpen ? (
+          {/* Masaüstü sidebar — lg ve üzeri */}
+          <aside className="sf-panel hidden w-[260px] shrink-0 flex-col rounded-2xl p-5 lg:flex">
+            <div className="mb-8">
+              <BrandBlock title={brandTitle} subtitle={brandSubtitle} />
+            </div>
+            <SidebarNav items={menuItems} onNavigate={() => {}} />
+          </aside>
+
+          {/* Mobil drawer — lg altı, slide-in */}
+          <div
+            className={`fixed inset-0 z-50 lg:hidden ${
+              isOpen
+                ? "visible pointer-events-auto"
+                : "invisible pointer-events-none"
+            }`}
+            aria-hidden={!isOpen}
+          >
             <button
               type="button"
-              className="fixed inset-0 z-40 bg-black/60 lg:hidden"
+              className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${
+                isOpen ? "opacity-100" : "opacity-0"
+              }`}
               aria-label="Menüyü kapat"
               onClick={closeSidebar}
+              tabIndex={isOpen ? 0 : -1}
             />
-          ) : null}
 
-          <aside
-            className={`sf-panel fixed inset-y-0 left-0 z-50 flex h-full w-[min(280px,85vw)] flex-col rounded-none rounded-r-2xl p-5 shadow-xl transition-transform duration-300 ease-out lg:static lg:z-auto lg:h-auto lg:w-[260px] lg:shrink-0 lg:translate-x-0 lg:rounded-2xl lg:shadow-none ${
-              isOpen ? "translate-x-0" : "-translate-x-full"
-            } ${!isOpen ? "pointer-events-none lg:pointer-events-auto" : ""}`}
-          >
-            <div className="mb-6 flex items-center justify-between gap-3 lg:mb-8">
-              <BrandBlock title={brandTitle} subtitle={brandSubtitle} />
-              <button
-                type="button"
-                onClick={closeSidebar}
-                className="sf-btn-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg lg:hidden"
-                aria-label="Menüyü kapat"
-              >
-                <CloseIcon />
-              </button>
-            </div>
-
-            <SidebarNav items={menuItems} onNavigate={closeSidebar} />
-          </aside>
+            <aside
+              className={`sf-panel absolute inset-y-0 left-0 flex h-full w-[min(280px,85vw)] flex-col rounded-none rounded-r-2xl p-5 shadow-xl transition-transform duration-300 ease-out ${
+                isOpen ? "translate-x-0" : "-translate-x-full"
+              }`}
+            >
+              <div className="mb-6 flex items-center justify-between gap-3">
+                <BrandBlock title={brandTitle} subtitle={brandSubtitle} />
+                <button
+                  type="button"
+                  onClick={closeSidebar}
+                  className="sf-btn-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+                  aria-label="Menüyü kapat"
+                >
+                  <CloseIcon />
+                </button>
+              </div>
+              <SidebarNav items={menuItems} onNavigate={closeSidebar} />
+            </aside>
+          </div>
 
           <main className="sf-panel min-w-0 flex-1 rounded-2xl p-5 md:p-6">
             {header}
