@@ -98,7 +98,6 @@ export function ResponsiveSidebarShell({
 
   return (
     <div className="sf-shell min-h-screen">
-      {/* Mobil header */}
       <header className="flex items-center px-4 py-3 lg:hidden">
         <button
           type="button"
@@ -113,7 +112,6 @@ export function ResponsiveSidebarShell({
         <div className="h-10 w-10" aria-hidden />
       </header>
 
-      {/* Masaüstü sidebar */}
       <aside className="sf-panel fixed inset-y-0 left-0 z-40 hidden h-full w-64 flex-col p-5 lg:flex">
         <SidebarContent
           brandTitle={brandTitle}
@@ -125,7 +123,6 @@ export function ResponsiveSidebarShell({
         />
       </aside>
 
-      {/* Mobil overlay sidebar */}
       <div
         className={`fixed inset-0 z-50 lg:hidden ${
           open ? "visible" : "invisible pointer-events-none"
@@ -135,14 +132,14 @@ export function ResponsiveSidebarShell({
         {open ? (
           <button
             type="button"
-            className="absolute inset-0 bg-black/50"
+            className="absolute inset-0 z-40 bg-black/50"
             aria-label="Menüyü kapat"
             onClick={() => setOpen(false)}
           />
         ) : null}
 
         <aside
-          className={`sf-panel fixed inset-y-0 left-0 flex h-full w-64 flex-col p-5 shadow-xl transition-transform duration-300 ease-out ${
+          className={`sf-panel fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col p-5 shadow-xl transition-transform duration-300 ease-out ${
             open ? "translate-x-0" : "-translate-x-full"
           }`}
         >
@@ -157,7 +154,6 @@ export function ResponsiveSidebarShell({
         </aside>
       </div>
 
-      {/* Ana içerik */}
       <main className="min-h-screen p-4 lg:ml-64">
         <div className="sf-panel rounded-2xl p-5 md:p-6">
           {header}
