@@ -63,11 +63,7 @@ export default async function IslemGecmisiPage() {
           </thead>
           <tbody>
             {logs.map((log) => (
-              <tr
-                key={log.id}
-                className="border-t"
-                style={{ borderColor: "var(--color-border)" }}
-              >
+              <tr key={log.id} className="sf-border-t">
                 <td className="p-3">{firstOrNull(log.user)?.full_name ?? "-"}</td>
                 <td className="p-3">{firstOrNull(log.tenant)?.name ?? "-"}</td>
                 <td className="p-3 font-medium">{log.action}</td>

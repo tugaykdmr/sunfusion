@@ -148,14 +148,7 @@ export default async function YeniFirmaPage({
       </header>
 
       {error ? (
-        <p
-          className="rounded-xl px-4 py-3 text-sm"
-          style={{
-            border: "1px solid var(--color-danger)",
-            color: "var(--color-danger)",
-            background: "var(--color-bg-primary)",
-          }}
-        >
+        <p className="sf-alert-danger rounded-xl px-4 py-3 text-sm">
           {error}
         </p>
       ) : null}

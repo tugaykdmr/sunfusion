@@ -149,27 +149,13 @@ export default async function KullaniciYonetimiPage({
       </header>
 
       {error ? (
-        <p
-          className="rounded-xl px-4 py-3 text-sm"
-          style={{
-            border: "1px solid var(--color-danger)",
-            color: "var(--color-danger)",
-            background: "var(--color-bg-primary)",
-          }}
-        >
+        <p className="sf-alert-danger rounded-xl px-4 py-3 text-sm">
           {error}
         </p>
       ) : null}
 
       {success ? (
-        <p
-          className="rounded-xl px-4 py-3 text-sm"
-          style={{
-            border: "1px solid var(--color-success)",
-            color: "var(--color-success)",
-            background: "var(--color-bg-primary)",
-          }}
-        >
+        <p className="sf-alert-success rounded-xl px-4 py-3 text-sm">
           {success}
         </p>
       ) : null}
@@ -253,11 +239,7 @@ export default async function KullaniciYonetimiPage({
           </thead>
           <tbody>
             {tenantUsers.map((user) => (
-              <tr
-                key={user.id}
-                className="border-t"
-                style={{ borderColor: "var(--color-border)" }}
-              >
+              <tr key={user.id} className="sf-border-t">
                 <td className="p-3 font-medium">{user.full_name}</td>
                 <td className="p-3">{user.username}</td>
                 <td className="p-3">{user.unit ?? "-"}</td>

@@ -70,7 +70,7 @@ export default function BessDenetimPage() {
             </thead>
             <tbody>
               {rows.map((row) => (
-                <tr key={`${row.project}-${row.date}`} className="border-t" style={{ borderColor: "var(--color-border)" }}>
+                <tr key={`${row.project}-${row.date}`} className="sf-border-t">
                   <td className="p-3 font-medium">{row.project}</td>
                   <td className="p-3">{row.system}</td>
                   <td className="p-3">{row.date}</td>

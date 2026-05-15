@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg-primary: #070f24;
-  --color-bg-secondary: #0b1735;
-  --color-bg-card: #111f44;
-  --color-text-primary: #e9eeff;
-  --color-text-secondary: #9fb0d8;
-  --color-accent: #4d79ff;
-  --color-border: #243760;
-  --color-success: #2fbf71;
-  --color-danger: #ff5f7a;
+  --color-bg-primary: #202123;
+  --color-bg-secondary: #2d2d30;
+  --color-bg-card: #343541;
+  --color-text-primary: #ececec;
+  --color-text-secondary: #8e8ea0;
+  --color-accent: #19c37d;
+  --color-border: #3e3f4b;
+  --color-success: #19c37d;
+  --color-danger: #ef4444;
 }
 
 @theme inline {
@@ -48,6 +48,20 @@ body {
   color: var(--color-accent);
 }
 
+.sf-border-t {
+  border-top: 1px solid var(--color-border);
+}
+
+.sf-header-bar {
+  border: 1px solid var(--color-border);
+}
+
+.sf-chip {
+  border: 1px solid var(--color-accent);
+  color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
+}
+
 .sf-input {
   width: 100%;
   border: 1px solid var(--color-border);
@@ -69,8 +83,12 @@ body {
 .sf-btn-primary {
   border: 1px solid var(--color-accent);
   background: var(--color-accent);
-  color: var(--color-text-primary);
+  color: var(--color-bg-primary);
   border-radius: 0.75rem;
+}
+
+.sf-btn-primary:hover {
+  filter: brightness(1.05);
 }
 
 .sf-btn-secondary {
@@ -80,6 +98,17 @@ body {
   border-radius: 0.75rem;
 }
 
+.sf-btn-secondary:hover {
+  background: var(--color-bg-card);
+}
+
+.sf-btn-danger {
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+  background: var(--color-bg-primary);
+  border-radius: 0.5rem;
+}
+
 .sf-badge-success {
   border: 1px solid var(--color-success);
   color: var(--color-success);
@@ -87,6 +116,18 @@ body {
 }
 
 .sf-badge-danger {
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+  background: var(--color-bg-primary);
+}
+
+.sf-alert-success {
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+  background: var(--color-bg-primary);
+}
+
+.sf-alert-danger {
   border: 1px solid var(--color-danger);
   color: var(--color-danger);
   background: var(--color-bg-primary);

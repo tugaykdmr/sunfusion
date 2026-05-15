@@ -61,10 +61,7 @@ export default async function DashboardLayout({
         </aside>
 
         <main className="sf-panel rounded-2xl p-5 md:p-6">
-          <header
-            className="mb-5 flex flex-col justify-between gap-3 rounded-xl border p-4 md:flex-row md:items-center"
-            style={{ borderColor: "var(--color-border)" }}
-          >
+          <header className="sf-header-bar mb-5 flex flex-col justify-between gap-3 rounded-xl p-4 md:flex-row md:items-center">
             <div>
               <p className="sf-muted text-xs">Firma</p>
               <p className="font-semibold">{context.tenant.name}</p>

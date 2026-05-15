@@ -70,7 +70,7 @@ export default function BessOmPage() {
             </thead>
             <tbody>
               {rows.map((row) => (
-                <tr key={row.system} className="border-t" style={{ borderColor: "var(--color-border)" }}>
+                <tr key={row.system} className="sf-border-t">
                   <td className="p-3 font-medium">{row.system}</td>
                   <td className="p-3">{row.location}</td>
                   <td className="p-3">{row.capacity}</td>

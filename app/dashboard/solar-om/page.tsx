@@ -91,7 +91,7 @@ export default function SolarOmPage() {
             </thead>
             <tbody>
               {plantRows.map((row) => (
-                <tr key={row.name} className="border-t" style={{ borderColor: "var(--color-border)" }}>
+                <tr key={row.name} className="sf-border-t">
                   <td className="p-3 font-medium">{row.name}</td>
                   <td className="p-3">{row.location}</td>
                   <td className="p-3">{row.powerKw}</td>
@@ -119,7 +119,7 @@ export default function SolarOmPage() {
             </thead>
             <tbody>
               {upcomingRows.map((row) => (
-                <tr key={`${row.plant}-${row.type}`} className="border-t" style={{ borderColor: "var(--color-border)" }}>
+                <tr key={`${row.plant}-${row.type}`} className="sf-border-t">
                   <td className="p-3 font-medium">{row.plant}</td>
                   <td className="p-3">{row.type}</td>
                   <td className="p-3">{row.plannedDate}</td>

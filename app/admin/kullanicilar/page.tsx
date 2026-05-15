@@ -61,11 +61,7 @@ export default async function KullanicilarPage() {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr
-                key={user.id}
-                className="border-t"
-                style={{ borderColor: "var(--color-border)" }}
-              >
+              <tr key={user.id} className="sf-border-t">
                 <td className="p-3 font-medium">{user.full_name}</td>
                 <td className="p-3">{firstOrNull(user.tenant)?.name ?? "-"}</td>
                 <td className="p-3">{user.unit ?? "-"}</td>
@@ -78,12 +74,7 @@ export default async function KullanicilarPage() {
                     <input type="hidden" name="user_id" value={user.id} />
                     <button
                       type="submit"
-                      className="rounded-lg px-3 py-2 text-xs font-semibold"
-                      style={{
-                        border: "1px solid var(--color-danger)",
-                        color: "var(--color-danger)",
-                        background: "var(--color-bg-primary)",
-                      }}
+                      className="sf-btn-danger px-3 py-2 text-xs font-semibold"
                     >
                       Sil
                     </button>

@@ -66,7 +66,7 @@ export default async function FirmalarPage() {
               const days = kalanGun(tenant.contract_end);
               const isActive = days >= 0;
               return (
-                <tr key={tenant.id} className="border-t" style={{ borderColor: "var(--color-border)" }}>
+                <tr key={tenant.id} className="sf-border-t">
                   <td className="p-3">
                     {tenant.logo_url ? (
                       <img

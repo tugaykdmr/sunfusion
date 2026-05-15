@@ -46,15 +46,7 @@ export default async function TenantDashboardPage() {
             <p className="sf-muted text-sm">Bu tenant icin aktif modul bulunamadi.</p>
           ) : (
             context.tenant.active_modules.map((moduleKey) => (
-              <span
-                key={moduleKey}
-                className="rounded-lg px-3 py-2 text-sm"
-                style={{
-                  border: "1px solid var(--color-accent)",
-                  color: "var(--color-text-primary)",
-                  background: "var(--color-bg-secondary)",
-                }}
-              >
+              <span key={moduleKey} className="sf-chip rounded-lg px-3 py-2 text-sm">
                 {moduleLabelMap[moduleKey]}
               </span>
             ))
@@ -71,8 +63,7 @@ export default async function TenantDashboardPage() {
             recentLogs?.map((log) => (
               <div
                 key={log.id}
-                className="flex items-center justify-between rounded-lg border px-3 py-2 text-sm"
-                style={{ borderColor: "var(--color-border)" }}
+                className="sf-header-bar flex items-center justify-between rounded-lg px-3 py-2 text-sm"
               >
                 <span>{log.action}</span>
                 <span className="sf-muted">{formatDate(log.created_at)}</span>

@@ -70,7 +70,7 @@ export default function TrafoBakimPage() {
             </thead>
             <tbody>
               {rows.map((row) => (
-                <tr key={row.transformer} className="border-t" style={{ borderColor: "var(--color-border)" }}>
+                <tr key={row.transformer} className="sf-border-t">
                   <td className="p-3 font-medium">{row.transformer}</td>
                   <td className="p-3">{row.location}</td>
                   <td className="p-3">{row.capacity}</td>
